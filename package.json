@@ -1,0 +1,10 @@
+{
+  "name": "pf-dre-devops",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": ">= 2.0.9",
+    "moment": "^2.24.0",
+    "uuid": "^3.3.2"
+  }
+}

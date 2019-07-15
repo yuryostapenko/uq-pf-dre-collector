@@ -1,0 +1,9 @@
+# Ignore IDE
+.idea/
+
+# Ignore Dependencies
+node_modules/
+
+# Ignore environment specific configuration files
+.env
+docker-compose.override.yml
