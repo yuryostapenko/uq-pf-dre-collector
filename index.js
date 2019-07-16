@@ -21,7 +21,7 @@ let timer;
 
 
 const runTask = () => {
-  const keyName = `${moment().format('YYYY-MM-DD-HH-mm-ss')}-omega-${uuid.v4()}.txt`;
+  const keyName = `${moment().format('YYYY-MM-DD-HH-mm-ss')}-epsilon-${uuid.v4()}.txt`;
   
   
   s3.createBucket({Bucket: bucketName}, (err, data) => {
