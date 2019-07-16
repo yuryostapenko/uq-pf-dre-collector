@@ -33,6 +33,7 @@ services:
       options:
         awslogs-region: $AWS_DEFAULT_REGION
         awslogs-group: $AWS_ECR_REPOSITORY
+        awslogs-stream-prefix: app
 EOT
 
 # Run ECS task definition with command

@@ -4,6 +4,3 @@ services:
     build: .
     image: uq-its-ss-pf-dre
     env_file: .env
-    volumes:
-      - ./:/usr/app/
-      - /usr/app/node_modules
