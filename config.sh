@@ -5,7 +5,7 @@
 #
 
 # Define in DEV
-#BUILD_ID="alfa"
+#BUILD_ID="dev"
 #AWS_DEFAULT_REGION="ap-southeast-2"
 
 # Define variables
