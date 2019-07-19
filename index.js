@@ -2,7 +2,7 @@ const moment = require('moment');
 const _ = require('lodash');
 
 const AWS = require('aws-sdk');
-AWS.config.update({region: 'ap-southeast-2'});
+AWS.config.update({ region: 'ap-southeast-2' });
 
 const INTERVAL = 5000;
 const meters = [
@@ -19,7 +19,7 @@ const meters = [
   'lambda',
   'mu',
   'nu',
-  'xi',  
+  'xi',
   'omicron',
   'pi',
   'rho',
@@ -46,21 +46,26 @@ let timer;
 
 
 const runTask = () => {
+  const dateId = moment().format('YYYY-MM-DD-HH-mm-ss');
   const meter = _.sample(meters);
-  const keyName = `${moment().format('YYYY-MM-DD-HH-mm-ss')}-${meter}.txt`;
-  
-  
-  s3.createBucket({Bucket: bucketName}, (err, data) => {
+  const keyName = `fresh/${meter}/${dateId}-${meter}.txt`;
+
+
+  s3.createBucket({ Bucket: bucketName }, (err, data) => {
     if (err.code !== 'BucketAlreadyOwnedByYou') {
       console.log(err);
     }
 
-    const params = { Bucket: bucketName, Key: keyName, Body: 'Hello World!' };
+    const params = {
+      Bucket: bucketName,
+      Key: keyName,
+      Body: `{ "id": "${dateId}", "meterCode": "${meter}", "value": "${_.random(-100, 100)}" }`
+    };
     s3.putObject(params, (err, data) => {
       if (err)
         console.log(err);
       else
         console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
-    });    
-  });  
+    });
+  });
 };
