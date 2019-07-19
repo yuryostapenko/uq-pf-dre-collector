@@ -15,5 +15,5 @@ services:
       - /usr/app/node_modules
 EOT
 
-# Rebuild
-docker-compose up --build
+# Build
+docker-compose build

@@ -1,11 +1,36 @@
 const moment = require('moment');
-const uuid = require('uuid');
+const _ = require('lodash');
 
 const AWS = require('aws-sdk');
 AWS.config.update({region: 'ap-southeast-2'});
 
-
 const INTERVAL = 5000;
+const meters = [
+  'alpha',
+  'beta',
+  'gamma',
+  'delta',
+  'epsilon',
+  'zeta',
+  'eta',
+  'theta',
+  'iota',
+  'kappa',
+  'lambda',
+  'mu',
+  'nu',
+  'xi',  
+  'omicron',
+  'pi',
+  'rho',
+  'sigma',
+  'tau',
+  'upsilon',
+  'phi',
+  'chi',
+  'psi',
+  'omega',
+];
 
 const s3 = new AWS.S3();
 const bucketName = 'uq-its-ss-pf-dre';
@@ -21,7 +46,8 @@ let timer;
 
 
 const runTask = () => {
-  const keyName = `${moment().format('YYYY-MM-DD-HH-mm-ss')}-kappa-${uuid.v4()}.txt`;
+  const meter = _.sample(meters);
+  const keyName = `${moment().format('YYYY-MM-DD-HH-mm-ss')}-${meter}.txt`;
   
   
   s3.createBucket({Bucket: bucketName}, (err, data) => {
