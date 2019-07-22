@@ -33,7 +33,7 @@ const meters = [
 ];
 
 const s3 = new AWS.S3();
-const bucketName = 'uq-its-ss-pf-dre';
+const bucketName = 'pf-dre-collector';
 
 let timer;
 
@@ -48,7 +48,7 @@ let timer;
 const runTask = () => {
   const dateId = moment().format('YYYY-MM-DD-HH-mm-ss');
   const meter = _.sample(meters);
-  const keyName = `fresh/${meter}/${dateId}-${meter}.txt`;
+  const keyName = `new/${meter}/${dateId}-${meter}.json`;
 
 
   s3.createBucket({ Bucket: bucketName }, (err, data) => {
